@@ -1,0 +1,23 @@
+@import "../styles/variables.scss";
+
+.container {
+  @media (orientation: portrait) {
+    min-height: calc(100vh - #{$header-smallbp-height}rem);
+  }
+
+  @media (orientation: landscape) {
+    min-height: 100vh;
+  }
+
+  position: relative;
+}
+
+.logo {
+  fill: $color-black-1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 75%;
+  max-width: 50%;
+}

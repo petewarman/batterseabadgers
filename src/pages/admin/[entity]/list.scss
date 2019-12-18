@@ -1,0 +1,43 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/typography.scss";
+
+.list {
+  @media (min-width: $bp-lap) {
+    overflow-y: auto;
+    position: fixed;
+    bottom: 0;
+    border-right: 1px solid $color-grey-3;
+    width: 35rem;
+  }
+
+  @media (orientation: portrait) {
+    top: #{$header-smallbp-height}rem;
+    left: 0;
+  }
+  @media (orientation: landscape) {
+    top: 0;
+    left: #{$header-largebp-width}rem;
+  }
+}
+
+.listItem {
+  border-bottom: 1px solid $color-grey-3;
+}
+
+.link {
+  @include font-sizer(2, 3);
+  display: block;
+  padding: 1rem 2rem;
+  color: $color-black-1;
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  &:hover,
+  &:focus {
+    background-color: $color-grey-1;
+  }
+}
+
+.selectedLink {
+  background-color: $color-grey-2;
+}

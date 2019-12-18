@@ -1,0 +1,13 @@
+@import "../../styles/typography.scss";
+
+.full {
+  @media (max-width: $bp-lap-medium - 1) {
+    display: none;
+  }
+}
+
+.short {
+  @media (min-width: $bp-lap-medium) {
+    display: none;
+  }
+}

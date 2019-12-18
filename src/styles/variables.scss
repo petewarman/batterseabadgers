@@ -1,0 +1,61 @@
+//colors
+$color-white-1: #fafafa; // #fafafa
+
+$color-grey-1: #efeeec; //legacy-color-grey-3 // #eee / #efeee4
+$color-grey-2: #dddddd; //legacy-color-grey-5 // #ddd  / #d2d1c8
+$color-grey-3: #cccccc; //legacy-color-grey-7 // #ccc
+$color-grey-4: #999999; //legacy-color-grey-6
+$color-grey-5: #666666; //legacy-color-grey-4 //
+$color-grey-6: #444444; //legacy-color-grey-2 // #505a65
+$color-grey-7: #353739; //legacy-color-grey-1 // #353739 / #333
+
+$color-black-1: #222424; //#090909 / #222424
+
+$color-redink: #aa0000;
+$color-red-2: #cc0000;
+
+$color-blue-1: #4a90e2;
+$color-blue-2: #66a3e8;
+
+//font stacks
+$font-title: "Hoefler Titling A", "Hoefler Titling B", "Hoefler Text",
+  "Baskerville Old Face", Garamond, "Times New Roman", serif;
+$font-body: "Mercury SSm A", "Mercury SSm B", Georgia, Times, "Times New Roman",
+  serif;
+$font-tnum: "Mercury SSm tnum A", "Mercury SSm tnum B", "Mercury SSm A",
+  "Mercury SSm B", Georgia, Times, "Times New Roman", serif;
+$font-smcp: "Mercury SSm smcp A", "Mercury SSm smcp B", "Mercury SSm A",
+  "Mercury SSm B", Georgia, Times, "Times New Roman", serif;
+
+$base-font-size: 8;
+
+//breakpoints
+$bp-hand: 320px;
+$bp-hand-medium: 375px;
+$bp-hand-large: 414px;
+$bp-lap: 640px;
+$bp-lap-medium: 768px;
+$bp-lap-large: 840px;
+$bp-sidebar-nav: 840px;
+$bp-desk: 1024px;
+$bp-desk-medium: 1200px;
+$bp-desk-large: 1500px;
+
+$breakpoints: (
+  hand: 320px,
+  hand-medium: 375px,
+  hand-large: 414px,
+  lap: 640px,
+  lap-medium: 768px,
+  lap-large: 840px,
+  sidebar-nav: 840px,
+  desk: 1024px,
+  desk-medium: 1200px,
+  desk-large: 1500px
+);
+
+//layout dimensions
+$header-smallbp-height: 7;
+$header-largebp-width: 14;
+$controls-smallbp-height: 5;
+$controls-largebp-width: 32;

@@ -1,0 +1,49 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/typography.scss";
+
+.list {
+  @media (max-width: $bp-lap - 1) {
+    display: none;
+  }
+}
+
+.formContainer {
+  @media (min-width: $bp-lap) {
+    margin-left: 35rem;
+  }
+}
+
+.form {
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  max-width: 50rem;
+}
+
+.fieldContainer {
+  margin-bottom: 2rem;
+}
+
+.label {
+  @include font-sizer(2, 3);
+  display: block;
+}
+
+.textInput {
+  @include font-sizer(2, 2);
+  padding: 1rem;
+  display: block;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.submit {
+  @include font-sizer(2, 3);
+  border: 0;
+  background: $color-black-1;
+  color: $color-white-1;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 2rem;
+}

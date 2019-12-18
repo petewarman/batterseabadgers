@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+@import "../../styles/typography.scss";
+
+.container {
+  background: $color-grey-1;
+  @include font-sizer(2, 2);
+}
+
+.list {
+  display: flex;
+  overflow-x: auto;
+}
+
+.listItem {
+  display: block;
+
+  &:first-child {
+    margin-left: auto;
+  }
+
+  &:last-child {
+    margin-right: auto;
+  }
+}
+
+.link {
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+  color: $color-black-1;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background: $color-grey-2;
+  }
+
+  &.selected {
+    background: $color-grey-3;
+  }
+}

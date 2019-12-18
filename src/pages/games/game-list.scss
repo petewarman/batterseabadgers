@@ -1,0 +1,119 @@
+@import "../../styles/variables.scss";
+@import "../../styles/typography.scss";
+
+.groupTitle {
+  @include font-sizer(1.5, 2);
+  padding: 1rem 2rem;
+  color: #999;
+  min-height: 2rem;
+  margin-top: 4rem;
+}
+
+.gameList {
+  border-top: 1px solid $color-grey-3;
+}
+
+.gameListItem {
+  border-bottom: 1px solid $color-grey-3;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  min-height: 6rem;
+  color: $color-black-1;
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  @media (min-width: $bp-hand-large) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-grey-1;
+  }
+}
+
+.fullDate,
+.shortDate {
+  @include font-sizer(1.5, 2);
+  width: 8rem;
+
+  @media (min-width: $bp-hand-large) {
+    width: 12rem;
+  }
+}
+
+.fullDate {
+  @media (max-width: $bp-hand-large - 1) {
+    display: none;
+  }
+}
+
+.shortDate {
+  @media (min-width: $bp-hand-large) {
+    display: none;
+  }
+}
+
+.team {
+  @include font-sizer(2.5, 3);
+  font-family: $font-title;
+  flex-grow: 1;
+}
+
+.extra {
+  text-align: right;
+}
+
+.result {
+  @include font-sizer(2, 2);
+  display: block;
+  font-style: italic;
+}
+
+.margin {
+  @include font-sizer(1.25, 2);
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .extra {
+    width: 15rem;
+    text-align: left;
+  }
+
+  .result,
+  .margin {
+    display: inline;
+  }
+
+  .margin {
+    margin-left: 1rem;
+  }
+}
+
+.filter {
+  background: $color-grey-1;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+.filterItem {
+  &:first-of-type {
+    margin-left: auto;
+  }
+
+  &:last-child {
+    margin-right: auto;
+  }
+}
+
+.pageTitle,
+.filterTitle {
+  @include visually-hidden;
+}

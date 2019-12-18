@@ -1,0 +1,25 @@
+@import "../styles/variables.scss";
+@import "../styles/reset.scss";
+@import "../styles/base.scss";
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  @media (orientation: landscape) {
+    width: #{$header-largebp-width}rem;
+    height: 100%;
+  }
+}
+
+.main {
+  @media (orientation: portrait) {
+    padding-top: #{$header-smallbp-height}rem;
+  }
+
+  @media (orientation: landscape) {
+    padding-left: #{$header-largebp-width}rem;
+  }
+}

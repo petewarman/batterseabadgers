@@ -1,0 +1,105 @@
+@import "../../styles/variables.scss";
+@import "../../styles/typography.scss";
+
+// #{$header-smallbp-height}rem;
+// #{$header-largebp-width}rem;
+
+.container {
+  background: $color-black-1;
+  color: $color-white-1;
+  position: relative;
+
+  @media (orientation: landscape) {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow-y: auto;
+  }
+
+  svg {
+    fill: $color-white-1;
+    display: block;
+  }
+}
+
+.list {
+  @include font-sizer(2, 2);
+  text-transform: uppercase;
+  display: flex;
+
+  @media (orientation: portrait) {
+    margin-right: #{$header-smallbp-height}rem;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+  }
+
+  @media (orientation: landscape) {
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+}
+
+.listItem {
+  @media (orientation: landscape) {
+    &:first-child {
+      margin-bottom: auto;
+    }
+
+    &:last-child {
+      margin-bottom: auto;
+    }
+  }
+
+  @media (orientation: portrait) {
+    &:first-child {
+      margin-right: auto;
+    }
+
+    &:last-child {
+      margin-right: auto;
+    }
+  }
+}
+
+.link {
+  padding: 20px 16px;
+  display: block;
+  color: $color-white-1;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    background: $color-grey-7;
+  }
+
+  &.selected {
+    background: $color-grey-6;
+  }
+}
+
+.logo {
+  @media (orientation: portrait) {
+    width: 76px;
+    height: #{$header-smallbp-height}rem;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.sponsor {
+  display: block;
+
+  @media (orientation: portrait) {
+    width: #{$header-smallbp-height}rem;
+    height: #{$header-smallbp-height}rem;
+    padding: 8px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  @media (orientation: landscape) {
+    padding: 16px;
+  }
+}

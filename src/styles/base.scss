@@ -1,0 +1,47 @@
+@import "./variables.scss";
+:global {
+  html,
+  body {
+    font-family: $font-body;
+    font-size: #{$base-font-size}px;
+    -webkit-font-variant-ligatures: common-ligatures; /* for iOS and Safari 6 */
+    font-variant-ligatures: common-ligatures; /* for up-to-date browsers, including IE10 and Opera 21 */
+    -moz-font-feature-settings: "kern=1"; /* pre-Firefox 14+ */
+    -webkit-font-feature-settings: "kern";
+    -moz-font-feature-settings: "kern"; /* Firefox 14+ */
+    font-feature-settings: "kern"; /* standard */
+    font-kerning: normal; /* Safari 7+, Firefox 24+, Chrome 33(?)+, Opera 21+*/
+    background: $color-white-1;
+    color: $color-black-1;
+  }
+
+  a,
+  button,
+  [tabindex],
+  .filter__field {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
+  table {
+    font-family: $font-tnum;
+    -webkit-font-feature-settings: "tnum";
+    -moz-font-feature-settings: "tnum";
+    -ms-font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+  }
+
+  abbr {
+    text-decoration: none;
+  }
+}

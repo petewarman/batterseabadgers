@@ -1,0 +1,187 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/typography.scss";
+.scorecard {
+  padding: 4rem 2rem 2rem;
+
+  th,
+  td {
+    @include font-sizer(1.5, 2);
+    border-bottom: 1px solid $color-grey-1;
+    text-align: right;
+    max-width: 4rem;
+    padding: 0.5rem 0.5rem calc(0.5rem - 1px);
+    white-space: nowrap;
+
+    &:first-child,
+    &.batTableDismissal {
+      text-align: left;
+      max-width: none;
+    }
+  }
+
+  th {
+    @include font-sizer(1.25, 2);
+
+    &.batTableName,
+    &.batTableDismissal,
+    &.bowlTableName {
+      visibility: hidden;
+    }
+  }
+
+  .player-name {
+    text-decoration: none;
+    color: $color-black-1;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .firstname {
+    display: none;
+  }
+
+  tr.not-out {
+    color: $color-redink;
+
+    .player-name {
+      color: $color-redink;
+    }
+  }
+}
+
+.innings {
+  margin-bottom: 4rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.inningsTitle {
+  @include font-sizer(2, 2);
+  font-family: $font-smcp;
+  -webkit-font-feature-settings: "smcp";
+  -moz-font-feature-settings: "smcp";
+  -ms-font-feature-settings: "smcp";
+  font-feature-settings: "smcp";
+  text-align: center;
+
+  @media screen and (min-width: $bp-hand-large) {
+    @include font-sizer(2.5, 3);
+  }
+}
+
+.inningsTitleTeam,
+.inningsTitleScore {
+  display: block;
+}
+
+.tableHolder {
+  overflow-x: auto;
+}
+
+.battingTable,
+.bowlingTable {
+  margin: 1em 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td.batTableDismissal {
+  @include font-sizer(1.25, 2);
+  text-align: left;
+
+  .initial,
+  .firstname {
+    display: none;
+  }
+}
+
+.batTableTotal {
+  font-weight: bold;
+
+  td {
+    border: 0;
+  }
+}
+
+.fow,
+.dnb {
+  @include font-sizer(1.25, 2);
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
+  min-height: 0;
+
+  li {
+    display: inline-block;
+    margin-right: 0.25em;
+
+    &:after {
+      content: ",";
+    }
+
+    &:nth-last-child(2) {
+      &:after {
+        content: " and ";
+      }
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.fow {
+  li:first-child:before {
+    content: "Fall of wickets: ";
+  }
+}
+.dnb {
+  li:first-child:before {
+    content: "Did not bat: ";
+  }
+}
+
+@media screen and (max-width: $bp-desk) {
+  .batTableStrikeRate,
+  .batTableFours,
+  .batTableSixes {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $bp-lap) {
+  .scorecard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .innings {
+    width: calc(50% - 1rem);
+    flex-shrink: 0;
+    max-width: 75rem;
+
+    &:nth-child(odd) {
+      margin-right: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: $bp-lap-large) {
+  .scorecard {
+    .initial {
+      display: none;
+    }
+    .firstname {
+      display: inline;
+    }
+  }
+}

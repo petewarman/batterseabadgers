@@ -1,0 +1,275 @@
+@import "./variables.scss";
+
+@mixin font-sizer($font-size, $line-height, $bp: 0) {
+  @if $bp == 0 {
+    font-size: #{$font-size}rem;
+    line-height: #{$line-height / $font-size};
+    min-height: #{$line-height}rem;
+  } @else {
+    @media screen and (min-width: $bp) {
+      font-size: #{$font-size}rem;
+      line-height: #{$line-height / $font-size};
+      min-height: #{$line-height}rem;
+    }
+  }
+}
+
+@mixin summary-title {
+  font-family: $font-title;
+  font-weight: 600;
+  -webkit-font-variant-ligatures: common-ligatures; /* for iOS and Safari 6 */
+  font-variant-ligatures: common-ligatures; /* for up-to-date browsers, including IE10 and Opera 21 */
+  -moz-font-feature-settings: "kern=1"; /* pre-Firefox 14+ */
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern"; /* Firefox 14+ */
+  font-feature-settings: "kern"; /* standard */
+  font-kerning: normal; /* Safari 7+, Firefox 24+, Chrome 33(?)+, Opera 21+*/
+  //@include font-sizer(2.5, 3);
+  //@include font-sizer(3, 4, $bp-hand-large);
+  //@include font-sizer(4, 5, $bp-lap);
+}
+
+@mixin summary-subtitle {
+  font-style: italic;
+  //@include font-sizer(1.75, 2);
+  //@include font-sizer(2, 2.5, $bp-hand-large);
+  //@include font-sizer(2.25, 3, $bp-lap);
+}
+
+@mixin summary-details {
+  //@include font-sizer(1.25, 2);
+  //@include font-sizer(1.5, 2, $bp-lap);
+}
+
+@mixin listing-header {
+}
+
+@mixin page-title {
+  font-family: $font-title;
+  font-weight: 600;
+  -webkit-font-variant-ligatures: common-ligatures; /* for iOS and Safari 6 */
+  font-variant-ligatures: common-ligatures; /* for up-to-date browsers, including IE10 and Opera 21 */
+  -moz-font-feature-settings: "kern=1"; /* pre-Firefox 14+ */
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern"; /* Firefox 14+ */
+  font-feature-settings: "kern"; /* standard */
+  font-kerning: normal; /* Safari 7+, Firefox 24+, Chrome 33(?)+, Opera 21+*/
+  @include font-sizer(3.5, 4);
+  @include font-sizer(4, 5, $bp-hand-large);
+  @include font-sizer(6, 7, $bp-lap);
+  @include font-sizer(7, 8, $bp-lap-medium);
+}
+
+@mixin page-suptitle {
+  font-family: $font-body;
+  @include font-sizer(2, 3);
+  @include font-sizer(2.25, 3, $bp-hand-large);
+  @include font-sizer(2.5, 3, $bp-lap);
+  @include font-sizer(3, 5, $bp-lap-medium);
+}
+
+@mixin page-subtitle {
+  font-family: $font-body;
+  font-style: italic;
+  @include font-sizer(2, 3);
+  @include font-sizer(2.25, 3, $bp-hand-large);
+  @include font-sizer(2.5, 3, $bp-lap);
+  @include font-sizer(3, 5, $bp-lap-medium);
+}
+
+@mixin page-details {
+  @include font-sizer(1.5, 2);
+  @include font-sizer(1.75, 2, $bp-lap);
+  @include font-sizer(2, 3, $bp-lap-medium);
+}
+
+@mixin free-text {
+  > * {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h2 {
+    @include font-sizer(3, 4);
+    margin: 3rem 0 2rem;
+  }
+
+  h3 {
+    @include font-sizer(2.5, 3);
+    margin: 3rem 0 2rem;
+  }
+
+  p,
+  ul,
+  ol {
+    @include font-sizer(2, 3);
+    margin: 2rem 0;
+  }
+
+  ul,
+  ol {
+    padding-left: 3rem;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  li {
+    margin: 1rem 0;
+  }
+
+  blockquote {
+    margin: 2rem auto;
+    width: 90%;
+
+    > :not(footer) {
+      @include font-sizer(2.5, 3);
+
+      &:first-child {
+        text-indent: -1rem;
+
+        &:before {
+          content: "“";
+        }
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+        &:after {
+          content: "”";
+        }
+      }
+    }
+
+    footer {
+      @include font-sizer(1.75, 3);
+      display: block;
+      text-align: right;
+      margin-top: 1rem;
+
+      &:before {
+        content: "— ";
+      }
+    }
+  }
+
+  cite,
+  em,
+  i {
+    font-style: italic;
+  }
+
+  strong,
+  b {
+    font-weight: bold;
+  }
+
+  .prose {
+    display: table;
+    margin: 0 auto;
+  }
+
+  table {
+    @include font-sizer(1.75, 2);
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th {
+    font-weight: bold;
+    text-align: right;
+    padding: 0.5rem 1rem;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+
+  td {
+    padding: 0.5rem 1rem;
+    border: 1px solid $color-grey-2;
+    text-align: right;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+
+  @media screen and (min-width: $bp-lap) {
+    h2 {
+      @include font-sizer(4, 5);
+      margin: 4rem 0 2rem;
+    }
+
+    h3 {
+      @include font-sizer(3, 4);
+      margin: 3rem 0 2rem;
+    }
+
+    p,
+    ul,
+    ol {
+      //@include font-sizer(2, 3);
+      //margin: 2rem 0;
+    }
+
+    blockquote {
+      margin: 3rem auto;
+      width: 80%;
+
+      > :not(footer) {
+        @include font-sizer(3, 4);
+      }
+
+      footer {
+        display: block;
+        text-align: right;
+        @include font-sizer(2, 3);
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-lap-medium) {
+    p,
+    ul,
+    ol {
+      @include font-sizer(2.25, 4);
+      margin: 2rem 0;
+    }
+
+    blockquote {
+      margin: 5rem auto;
+      width: 90%;
+
+      > :not(footer) {
+        @include font-sizer(3.25, 5);
+      }
+
+      footer {
+        display: block;
+        text-align: right;
+        @include font-sizer(2.25, 3);
+      }
+    }
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
