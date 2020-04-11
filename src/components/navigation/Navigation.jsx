@@ -14,6 +14,7 @@ const Navigation = ({ className, defaultGamesFilter }) => {
     { href: { pathname: "/" }, text: <Logo />, linkClassName: styles.logo },
     { href: { pathname: "/admin/articles" }, text: "Articles" },
     { href: { pathname: "/admin/awards" }, text: "Awards" },
+    { href: { pathname: "/admin/award-categories" }, text: "Award categories" },
     { href: { pathname: "/admin/formats" }, text: "Formats" },
     { href: { pathname: "/admin/games" }, text: "Games" },
     { href: { pathname: "/admin/players" }, text: "Players" },

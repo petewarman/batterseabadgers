@@ -2,31 +2,34 @@ import dbConnection from "../../../db/connection";
 
 const config = {
   articles: {
-    select: ["title", "slug"],
+    fieldKeys: ["title", "slug"],
     orderBy: ["title"]
   },
   formats: {
-    select: ["slug", "name", "innings", "days"],
+    fieldKeys: ["slug", "name", "innings", "days"],
     orderBy: ["name"]
   },
   pages: {
-    select: ["slug", "navTitle", "title"],
+    fieldKeys: ["slug", "navTitle", "title"],
     orderBy: ["title"]
   },
   players: {
-    select: ["slug", "name", "surname", "number"],
+    fieldKeys: ["slug", "name", "surname", "number"],
     orderBy: ["surname", "name"]
   },
   teams: {
-    select: ["slug", "name", "shortname", "website"],
+    fieldKeys: ["slug", "name", "shortname", "website"],
     orderBy: ["name"]
   },
   venues: {
-    select: ["name", "slug"],
+    fieldKeys: ["name", "slug"],
     orderBy: ["name"]
   },
   awards: {
-    select: ["player_id", "category_id", "season_id"],
+    fieldKeys: ["award_categories.name", "awards.season_id", "awards,id"],
+    joins: [
+      { table: "award_categories", foreignKey: "category_id", primaryKey: "id" }
+    ],
     orderBy: ["season_id", "category_id"]
   }
 };
@@ -46,7 +49,7 @@ export default (req, res) => {
     res.status(404).end(`Not found`);
   } else {
     dbConnection
-      .select(config[entity].select)
+      .select(config[entity].fieldKeys)
       .from(entity)
       .where({ deleted_at: null })
       .orderBy(config[entity].orderBy)

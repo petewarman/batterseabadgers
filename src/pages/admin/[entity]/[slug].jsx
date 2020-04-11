@@ -4,27 +4,31 @@ import React, { useState } from "react";
 import { List } from "./";
 
 // utils
-import requestData from "../../../utils/requestData";
+import requestData, { updateData } from "../../../utils/requestData";
 
 // styles
 import styles from "./form.scss";
 
 const EntityField = ({ label, value, entity, onChange }) => {
-  return (
-    <p className={styles.fieldContainer}>
-      <label className={styles.label} htmlFor={label}>
-        {label}
-      </label>
-      <input
-        className={styles.textInput}
-        onChange={onChange}
-        id={label}
-        name={label}
-        type="text"
-        value={value}
-      />
-    </p>
-  );
+  if (label === "id") {
+    return <input type="hidden" id={label} name={label} value={value} />;
+  } else {
+    return (
+      <p className={styles.fieldContainer}>
+        <label className={styles.label} htmlFor={label}>
+          {label}
+        </label>
+        <input
+          className={styles.textInput}
+          onChange={onChange}
+          id={label}
+          name={label}
+          type="text"
+          value={value}
+        />
+      </p>
+    );
+  }
 };
 
 const EntityDetail = ({ item, items, entity }) => {
@@ -43,6 +47,7 @@ const EntityDetail = ({ item, items, entity }) => {
     evt.preventDefault();
     console.log(fieldState);
     setAltered(false);
+    updateData(entity, fieldState.slug, fieldState);
   };
 
   return (
