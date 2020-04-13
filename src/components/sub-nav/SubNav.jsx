@@ -3,7 +3,7 @@ import classnames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import styles from "./sub-nav.scss";
+import styles from "./sub-nav.module.scss";
 
 const SubNav = ({ links }) => {
   const { asPath } = useRouter();
@@ -15,7 +15,7 @@ const SubNav = ({ links }) => {
             <Link as={as} href={href} scroll={false}>
               <a
                 className={classnames(styles.link, {
-                  [styles.selected]: selected || asPath === as
+                  [styles.selected]: selected || asPath === as,
                 })}
               >
                 {text}

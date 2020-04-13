@@ -12,9 +12,9 @@ import dateFormat from "../../utils/dateFormat";
 import requestData from "../../utils/requestData";
 
 // Styles
-import styles from "./game-list.scss";
+import styles from "./game-list.module.scss";
 
-const groupGamesByMonth = games => {
+const groupGamesByMonth = (games) => {
   return games.reduce((acc, game) => {
     const monthString = dateFormat(game.date, "MMMM YYYY");
     if (!acc[monthString]) {
@@ -25,11 +25,11 @@ const groupGamesByMonth = games => {
   }, {});
 };
 
-const formatQuery = query =>
+const formatQuery = (query) =>
   Object.entries(query).reduce(
     (acc, [key, val]) => ({
       ...acc,
-      [key.replace("[]", "")]: val
+      [key.replace("[]", "")]: val,
     }),
     {}
   );
@@ -49,18 +49,18 @@ const GameList = ({ gameGroups = {}, filters = [] }) => {
       selectedItems.length > 0
         ? {
             ...query,
-            [name]: selectedItems
+            [name]: selectedItems,
           }
         : omit(name, query);
 
     router.push(
       {
         pathname,
-        query: updatedQuery
+        query: updatedQuery,
       },
       {
         pathname,
-        query: updatedQuery
+        query: updatedQuery,
       },
       { shallow: true }
     );
@@ -68,8 +68,8 @@ const GameList = ({ gameGroups = {}, filters = [] }) => {
 
   useEffect(() => {
     requestData("games", {
-      params: formatQuery(query)
-    }).then(gameData => {
+      params: formatQuery(query),
+    }).then((gameData) => {
       setGroups(groupGamesByMonth(gameData.games));
     });
   }, [query]);
@@ -79,7 +79,7 @@ const GameList = ({ gameGroups = {}, filters = [] }) => {
       <h1 className={styles.pageTitle}>Games</h1>
       <form className={styles.filter}>
         <h2 className={styles.filterTitle}>Filter</h2>
-        {filters.map(filter => (
+        {filters.map((filter) => (
           <MultiSelect
             {...filter}
             selected={query[filter.name]}
@@ -90,7 +90,7 @@ const GameList = ({ gameGroups = {}, filters = [] }) => {
         ))}
       </form>
       <ol className={styles.groupList}>
-        {Object.keys(groups).map(groupKey => (
+        {Object.keys(groups).map((groupKey) => (
           <li key={groupKey} className={styles.groupListItem}>
             <h2 className={styles.groupTitle}>{groupKey}</h2>
             <ol className={styles.gameList}>
@@ -136,13 +136,13 @@ GameList.getInitialProps = ({ query }) => {
 
   return Promise.all([
     requestData("games", {
-      params: formatQuery(query)
+      params: formatQuery(query),
     }),
-    requestData("gamesFilter")
+    requestData("gamesFilter"),
   ]).then(([gameData, filterData]) => {
     return {
       gameGroups: groupGamesByMonth(gameData.games),
-      filters: filterData
+      filters: filterData,
     };
   });
 };

@@ -4,7 +4,7 @@ import React from "react";
 import Logo from "../icons/logo";
 
 // Styles
-import styles from "./index.scss";
+import styles from "./index.module.scss";
 
 const Home = () => (
   <div className={styles.container}>

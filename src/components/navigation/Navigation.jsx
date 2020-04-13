@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Logo from "../../icons/logoSmallWhite";
 import Sambrooks from "../../icons/sambrooksWhite";
-import styles from "./navigation.scss";
+import styles from "./navigation.module.scss";
 
 const Navigation = ({ className, defaultGamesFilter }) => {
   const router = useRouter();
@@ -19,7 +19,7 @@ const Navigation = ({ className, defaultGamesFilter }) => {
     { href: { pathname: "/admin/games" }, text: "Games" },
     { href: { pathname: "/admin/players" }, text: "Players" },
     { href: { pathname: "/admin/teams" }, text: "Teams" },
-    { href: { pathname: "/admin/venues" }, text: "Venues" }
+    { href: { pathname: "/admin/venues" }, text: "Venues" },
   ];
 
   const links = [
@@ -30,10 +30,10 @@ const Navigation = ({ className, defaultGamesFilter }) => {
     {
       href: {
         pathname:
-          "https://seriouscricket.co.uk/teamwear/stores/battersea-badgers-cc"
+          "https://seriouscricket.co.uk/teamwear/stores/battersea-badgers-cc",
       },
-      text: "Shop"
-    }
+      text: "Shop",
+    },
   ];
 
   return (
@@ -48,7 +48,7 @@ const Navigation = ({ className, defaultGamesFilter }) => {
                     className={classnames(styles.link, linkClassName, {
                       [styles.selected]:
                         pathname.split("?")[0].split("/")[1] ===
-                        href.pathname.split("?")[0].split("/")[1]
+                        href.pathname.split("?")[0].split("/")[1],
                     })}
                   >
                     {text}
@@ -58,7 +58,7 @@ const Navigation = ({ className, defaultGamesFilter }) => {
                 <a
                   href={href.pathname}
                   className={classnames(styles.link, linkClassName, {
-                    [styles.selected]: `/${pathname.split("/")[1]}` === href
+                    [styles.selected]: `/${pathname.split("/")[1]}` === href,
                   })}
                 >
                   {text}

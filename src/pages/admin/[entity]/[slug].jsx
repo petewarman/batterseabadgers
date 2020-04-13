@@ -7,7 +7,7 @@ import { List } from "./";
 import requestData, { updateData } from "../../../utils/requestData";
 
 // styles
-import styles from "./form.scss";
+import styles from "./form.module.scss";
 
 const EntityField = ({ label, value, entity, onChange }) => {
   if (label === "id") {
@@ -38,12 +38,12 @@ const EntityDetail = ({ item, items, entity }) => {
   const handleChange = ({ target: { name, value } }) => {
     setFieldState({
       ...fieldState,
-      [name]: value
+      [name]: value,
     });
     setAltered(true);
   };
 
-  const handleSubmit = evt => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log(fieldState);
     setAltered(false);
@@ -88,7 +88,7 @@ EntityDetail.getInitialProps = ({ query }) => {
       return {
         entity,
         item,
-        items
+        items,
       };
     }
   );

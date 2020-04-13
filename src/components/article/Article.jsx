@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./article.scss";
+import styles from "./article.module.scss";
 
 const Article = ({ title, supTitle, subTitle, details, children }) => (
   <article className={styles.container}>

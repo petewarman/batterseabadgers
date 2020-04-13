@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./team-name.scss";
+import styles from "./team-name.module.scss";
 
 const TeamName = ({ name, shortname, className }) =>
   shortname && shortname !== name ? (
@@ -17,7 +17,7 @@ const TeamName = ({ name, shortname, className }) =>
 TeamName.defaultProps = {
   name: "Battersea Badgers",
   shortname: "Badgers",
-  className: undefined
+  className: undefined,
 };
 
 export default TeamName;

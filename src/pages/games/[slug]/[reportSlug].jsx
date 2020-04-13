@@ -12,7 +12,7 @@ import dateFormat from "../../../utils/dateFormat";
 import getDismissalConfig from "../../../utils/getDismissalConfig";
 
 // Styles
-import styles from "./game-detail.scss";
+import styles from "./game-detail.module.scss";
 
 const GameReport = ({ gameInfo, report, gameSlug }) => {
   const {
@@ -23,7 +23,7 @@ const GameReport = ({ gameInfo, report, gameSlug }) => {
     date,
     format,
     venue,
-    reports
+    reports,
   } = gameInfo;
   const {
     slug,
@@ -31,7 +31,7 @@ const GameReport = ({ gameInfo, report, gameSlug }) => {
     content,
     authorName,
     authorSurname,
-    publicationDate
+    publicationDate,
   } = report;
 
   const pageTitle =
@@ -51,13 +51,13 @@ const GameReport = ({ gameInfo, report, gameSlug }) => {
     {
       as: `/games/${gameSlug}`,
       href: `/games/[slug]`,
-      text: "Scorecard"
-    }
+      text: "Scorecard",
+    },
   ].concat(
     reports.map(({ slug, title }) => ({
       as: `/games/${gameSlug}/${slug}`,
       href: `/games/[slug]/[reportSlug]`,
-      text: title
+      text: title,
     }))
   );
 
@@ -89,7 +89,7 @@ GameReport.getInitialProps = ({ query }) => {
 
   return Promise.all([
     axios.get(`http://localhost:3000/api/games/${slug}`),
-    axios.get(`http://localhost:3000/api/articles/${reportSlug}`)
+    axios.get(`http://localhost:3000/api/articles/${reportSlug}`),
   ]).then(([gameInfo, report]) => {
     return { gameInfo: gameInfo.data, report: report.data, gameSlug: slug };
   });

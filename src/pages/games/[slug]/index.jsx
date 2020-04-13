@@ -12,7 +12,7 @@ import dateFormat from "../../../utils/dateFormat";
 import getDismissalConfig from "../../../utils/getDismissalConfig";
 
 // Styles
-import styles from "./game-detail.scss";
+import styles from "./game-detail.module.scss";
 
 const isPlayer = ({ name, surname }) =>
   (name || surname) && surname !== "Unknown";
@@ -79,7 +79,7 @@ const getExtrasSummary = ({
   extras_noballs,
   extras_byes,
   extras_legbyes,
-  extras_pens
+  extras_pens,
 }) => {
   let summary = [];
 
@@ -112,7 +112,7 @@ const GameScorecard = ({ scorecard, gameInfo, gameSlug }) => {
     date,
     format,
     venue,
-    reports
+    reports,
   } = gameInfo;
 
   const title =
@@ -134,13 +134,13 @@ const GameScorecard = ({ scorecard, gameInfo, gameSlug }) => {
     {
       as: `/games/${gameSlug}`,
       href: `/games/[slug]`,
-      text: "Scorecard"
-    }
+      text: "Scorecard",
+    },
   ].concat(
     reports.map(({ slug, title }) => ({
       as: `/games/${gameSlug}/${slug}`,
       href: `/games/[slug]/[reportSlug]`,
-      text: title
+      text: title,
     }))
   );
 
@@ -168,7 +168,7 @@ const GameScorecard = ({ scorecard, gameInfo, gameSlug }) => {
             extras_noballs,
             extras_byes,
             extras_legbyes,
-            extras_pens
+            extras_pens,
           }) => (
             <div key={innings_no} className={styles.innings}>
               <h3 className={styles.inningsTitle}>
@@ -205,12 +205,12 @@ const GameScorecard = ({ scorecard, gameInfo, gameSlug }) => {
                           runs,
                           balls,
                           fours,
-                          sixes
+                          sixes,
                         }) => (
                           <tr
                             key={batnumber}
                             className={classnames({
-                              [styles["not-out"]]: dismissal.type === "Not out"
+                              [styles["not-out"]]: dismissal.type === "Not out",
                             })}
                           >
                             <td className={styles.batTableName}>
@@ -242,7 +242,7 @@ const GameScorecard = ({ scorecard, gameInfo, gameSlug }) => {
                           extras_noballs,
                           extras_byes,
                           extras_legbyes,
-                          extras_pens
+                          extras_pens,
                         })}
                       </td>
                       <td>
@@ -331,7 +331,7 @@ const GameScorecard = ({ scorecard, gameInfo, gameSlug }) => {
                           runs,
                           wickets,
                           wides,
-                          noballs
+                          noballs,
                         },
                         i
                       ) => (
@@ -367,12 +367,12 @@ GameScorecard.getInitialProps = ({ query }) => {
 
   return Promise.all([
     axios.get(`http://localhost:3000/api/games/${slug}`),
-    axios.get(`http://localhost:3000/api/games/${slug}/scorecard`)
+    axios.get(`http://localhost:3000/api/games/${slug}/scorecard`),
   ]).then(([gameInfo, scorecard]) => {
     return {
       scorecard: scorecard.data,
       gameInfo: gameInfo.data,
-      gameSlug: slug
+      gameSlug: slug,
     };
   });
 };

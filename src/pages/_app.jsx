@@ -8,7 +8,9 @@ import Navigation from "../components/navigation/Navigation";
 import requestData from "../utils/requestData";
 
 // Styles
-import styles from "./app.scss";
+import "../styles/reset.scss";
+import "../styles/base.scss";
+import styles from "./app.module.scss";
 
 class MyApp extends App {
   static async getInitialProps(appContext) {

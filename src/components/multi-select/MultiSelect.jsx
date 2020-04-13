@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
 
-import styles from "./multi-select.scss";
+import styles from "./multi-select.module.scss";
 
 const MultiSelect = ({
   title,
@@ -9,12 +9,12 @@ const MultiSelect = ({
   options,
   className,
   onChange,
-  selected = []
+  selected = [],
 }) => {
   const container = useRef(null);
   const [open, setOpen] = useState(false);
   const [filteredOptions, setFilteredOptions] = useState(options);
-  const handleSummaryClick = evt => {
+  const handleSummaryClick = (evt) => {
     evt.preventDefault();
     setOpen(!open);
   };
@@ -30,7 +30,7 @@ const MultiSelect = ({
   const handleCheckboxChange = ({ target: { name, value, checked } }) => {
     const updatedSelected = checked
       ? [].concat(selected).concat(value)
-      : [].concat(selected).filter(val => val !== value);
+      : [].concat(selected).filter((val) => val !== value);
     onChange(name, updatedSelected);
   };
 
@@ -38,7 +38,7 @@ const MultiSelect = ({
     onChange(name, []);
   };
 
-  const clickToCloseListener = evt => {
+  const clickToCloseListener = (evt) => {
     if (
       open &&
       container &&
@@ -61,7 +61,7 @@ const MultiSelect = ({
     .filter(({ value }) => selected.includes(value))
     .map(({ label }) => label);
 
-  const stringifyList = list => {
+  const stringifyList = (list) => {
     if (list.length > 1) {
       const finalItem = list.pop();
       return `${list.join(", ")} & ${finalItem}`;
